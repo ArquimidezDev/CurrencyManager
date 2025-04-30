@@ -1,5 +1,5 @@
 # Currency Manager App
-Retrieves records from Free Currency API and stores this in Salesforce. Supports Currency Data and Latest Rates
+Retrieves records from Free Currency API and stores them in Salesforce. Supports Currency Data and Latest Rates
 
 ## Pending
 
