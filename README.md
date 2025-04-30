@@ -1,18 +1,17 @@
-# Salesforce DX Project: Next Steps
+# Currency Manager App
+Retrieves records from Free Currency API and stores this in Salesforce. Supports Currency Data and Latest Rates
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+## Pending
 
-## How Do You Plan to Deploy Your Changes?
+Missed to add scheduled functionality
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+## Screenshots
+![imagen](https://github.com/user-attachments/assets/26607963-436c-4a3a-93af-8c6a28db00c4)
+![imagen](https://github.com/user-attachments/assets/3f8346ea-d5bd-4e37-ac93-89c9e19819bf)
+![imagen](https://github.com/user-attachments/assets/9f9bdb8e-2681-49e7-ab6c-5c33ed0eb0d0)
+![imagen](https://github.com/user-attachments/assets/01d0dead-c976-49fb-a4ee-8da2fb995e02)
+![imagen](https://github.com/user-attachments/assets/1cfd76bd-aff9-4a33-943a-1defecfe4abd)
 
-## Configure Your Salesforce DX Project
+## Source
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+- [Free Currency API Docs](https://freecurrencyapi.com/docs)
