@@ -1,0 +1,30 @@
+<!--
+  @description       : 
+  @author            : Arquimidez Mora
+  @group             : 
+  @last modified on  : 04-29-2025
+  @last modified by  : Arquimidez Mora
+  Modifications Log
+  Ver   Date         Author            Modification
+  1.0   04-29-2025   Arquimidez Mora   Initial Version
+-->
+<template>
+    <template lwc:if={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner> 
+    </template>
+    <template lwc:else>
+        <lightning-card  title="Retrieve Currencies">
+            <h3 slot="title">
+                <lightning-icon icon-name="standard:partner_marketing_budget" size="large"></lightning-icon>
+                Retrieve Currencies
+            </h3>
+            <lightning-button label="Store Selected" variant="brand" slot="actions" onclick={handleStoreSelected}></lightning-button>
+            <lightning-datatable
+                    key-field="code"
+                    data={currencyData}
+                    columns={currencyColumns}
+                    onrowselection={getSelectedRows}>
+            </lightning-datatable>
+        </lightning-card>
+    </template>
+</template>

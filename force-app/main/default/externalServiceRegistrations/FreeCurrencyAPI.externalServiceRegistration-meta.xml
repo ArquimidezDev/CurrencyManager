@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalServiceRegistration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Retrieves Currency Data from Free Currency API</description>
+    <label>FreeCurrencyAPI</label>
+    <namedCredentialReference>FreeCurrencyAPI</namedCredentialReference>
+    <operations>
+        <active>true</active>
+        <name>fcastatus</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>fcalatest</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>fcacurrencies</name>
+    </operations>
+    <registrationProviderType>Custom</registrationProviderType>
+    <schema>{
+  &quot;openapi&quot;: &quot;3.1.0&quot;,
+  &quot;info&quot;: {
+    &quot;title&quot;: &quot;Free Currency API&quot;,
+    &quot;summary&quot;: &quot;Retrieves Currency Data&quot;,
+    &quot;description&quot;: &quot;Retrieve Currency Data from Free Currency API&quot;,
+    &quot;contact&quot;: {
+      &quot;name&quot;: &quot;Free Currency API Support&quot;,
+      &quot;url&quot;: &quot;https://freecurrencyapi.com/docs/#official-libraries&quot;,
+      &quot;email&quot;: &quot;support@freecurrencyapi.com&quot;
+    },
+    &quot;version&quot;: &quot;1.0.2&quot;
+  },
+  &quot;servers&quot;: [{
+    &quot;url&quot;: &quot;https://api.freecurrencyapi.com/v1&quot;,
+    &quot;description&quot;: &quot;Free Currency API Endpoint&quot;
+  }],
+  &quot;paths&quot;: {
+    &quot;/status&quot;: {
+      &quot;get&quot;: {
+        &quot;operationId&quot;: &quot;fcaStatus&quot;,
+        &quot;tags&quot;: [
+          &quot;API Status&quot;
+        ],
+        &quot;summary&quot;: &quot;Retrieves usage information and remaining requests&quot;,
+        &quot;externalDocs&quot;: {
+          &quot;description&quot;: &quot;API Spec page&quot;,
+          &quot;url&quot;: &quot;https://freecurrencyapi.com/docs/status#request-parameters&quot;
+        },
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;Successfull Response&quot;,
+            &quot;content&quot;: {
+              &quot;application/json&quot;: {
+                &quot;schema&quot;: {
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;properties&quot;: {
+                    &quot;quotas&quot;: {
+                      &quot;type&quot;: &quot;object&quot;,
+                      &quot;properties&quot;: {
+                        &quot;month&quot;: {
+                          &quot;type&quot;: &quot;object&quot;,
+                          &quot;properties&quot;: {
+                            &quot;total&quot;: {
+                              &quot;type&quot;: &quot;integer&quot;
+                            },
+                            &quot;used&quot;: {
+                              &quot;type&quot;: &quot;integer&quot;
+                            },
+                            &quot;remaining&quot;: {
+                              &quot;type&quot;: &quot;integer&quot;
+                            }
+                          },
+                          &quot;examples&quot;: [{
+                            &quot;total&quot;: 300,
+                            &quot;used&quot;: 71,
+                            &quot;remaining&quot;: 229
+                          }]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/currencies&quot;: {
+      &quot;get&quot;: {
+        &quot;operationId&quot;: &quot;fcaCurrencies&quot;,
+        &quot;tags&quot;: [
+          &quot;Currencies&quot;
+        ],
+        &quot;summary&quot;: &quot;Returns all our supported currencies&quot;,
+        &quot;externalDocs&quot;: {
+          &quot;description&quot;: &quot;API Spec page&quot;,
+          &quot;url&quot;: &quot;https://freecurrencyapi.com/docs/currencies#request-parameters&quot;
+        },
+        &quot;parameters&quot;: [{
+          &quot;in&quot;: &quot;query&quot;,
+          &quot;name&quot;: &quot;currencies&quot;,
+          &quot;schema&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          },
+          &quot;required&quot;: false,
+          &quot;description&quot;: &quot;List of currency codes sepparated by comma&quot;
+        }],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;Successfull Response&quot;,
+            &quot;content&quot;: {
+              &quot;application/json&quot;: {
+                &quot;schema&quot;: {
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;properties&quot;: {
+                    &quot;data&quot;: {
+                      &quot;type&quot;: &quot;object&quot;,
+                      &quot;additionalProperties&quot;: {
+                        &quot;properties&quot;: {
+                          &quot;symbol&quot;: {
+                            &quot;type&quot;: &quot;string&quot;
+                          },
+                          &quot;name&quot;: {
+                            &quot;type&quot;: &quot;string&quot;
+                          },
+                          &quot;symbol_native&quot;: {
+                            &quot;type&quot;: &quot;string&quot;
+                          },
+                          &quot;decimal_digits&quot;: {
+                            &quot;type&quot;: &quot;integer&quot;
+                          },
+                          &quot;rounding&quot;: {
+                            &quot;type&quot;: &quot;integer&quot;
+                          },
+                          &quot;code&quot;: {
+                            &quot;type&quot;: &quot;string&quot;
+                          },
+                          &quot;name_plural&quot;: {
+                            &quot;type&quot;: &quot;string&quot;
+                          },
+                          &quot;type&quot;: {
+                            &quot;type&quot;: &quot;string&quot;
+                          }
+                        },
+                        &quot;examples&quot;: [{
+                          &quot;symbol&quot;: &quot;$&quot;,
+                          &quot;name&quot;: &quot;USD Dollar&quot;,
+                          &quot;symbol_native&quot;: &quot;$&quot;,
+                          &quot;decimal_digits&quot;: 2,
+                          &quot;rounding&quot;: 0,
+                          &quot;code&quot;: &quot;USD&quot;,
+                          &quot;name_plural&quot;: &quot;US dollars&quot;,
+                          &quot;type&quot;: &quot;fiat&quot;
+                        }],
+                        &quot;type&quot;: &quot;object&quot;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/latest&quot;: {
+      &quot;get&quot;: {
+        &quot;operationId&quot;: &quot;fcaLatest&quot;,
+        &quot;tags&quot;: [
+          &quot;Latest Currency Value&quot;
+        ],
+        &quot;summary&quot;: &quot;Provides latest value for indicated currencies&quot;,
+        &quot;externalDocs&quot;: {
+          &quot;description&quot;: &quot;API Spec page&quot;,
+          &quot;url&quot;: &quot;https://freecurrencyapi.com/docs&quot;
+        },
+        &quot;parameters&quot;: [{
+          &quot;in&quot;: &quot;query&quot;,
+          &quot;name&quot;: &quot;currencies&quot;,
+          &quot;schema&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          },
+          &quot;required&quot;: false,
+          &quot;description&quot;: &quot;List of currency codes sepparated by comma&quot;
+        }],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;Successfull Response&quot;,
+            &quot;content&quot;: {
+              &quot;application/json&quot;: {
+                &quot;schema&quot;: {
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;properties&quot;: {
+                    &quot;data&quot;: {
+                      &quot;type&quot;: &quot;object&quot;,
+                      &quot;additionalProperties&quot;: {
+                        &quot;type&quot;: &quot;integer&quot;
+                      },
+                      &quot;examples&quot;: [{
+                        &quot;EUR&quot;: 0.8764201365
+                      }]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;components&quot;: {
+    &quot;schemas&quot;: {
+      &quot;CurrencyData&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+          &quot;symbol&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          },
+          &quot;name&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          },
+          &quot;symbol_native&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          },
+          &quot;decimal_digits&quot;: {
+            &quot;type&quot;: &quot;integer&quot;
+          },
+          &quot;rounding&quot;: {
+            &quot;type&quot;: &quot;integer&quot;
+          },
+          &quot;code&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          },
+          &quot;name_plural&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          },
+          &quot;type&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          }
+        },
+        &quot;examples&quot;: [{
+          &quot;symbol&quot;: &quot;$&quot;,
+          &quot;name&quot;: &quot;USD Dollar&quot;,
+          &quot;symbol_native&quot;: &quot;$&quot;,
+          &quot;decimal_digits&quot;: 2,
+          &quot;rounding&quot;: 0,
+          &quot;code&quot;: &quot;USD&quot;,
+          &quot;name_plural&quot;: &quot;US dollars&quot;,
+          &quot;type&quot;: &quot;fiat&quot;
+        }]
+      }
+    }
+  }
+}</schema>
+    <schemaType>OpenApi3</schemaType>
+    <serviceBinding>{&quot;host&quot;:&quot;api.freecurrencyapi.com&quot;,&quot;basePath&quot;:&quot;/v1&quot;,&quot;allowedSchemes&quot;:[&quot;HTTPS&quot;],&quot;requestMediaTypes&quot;:[],&quot;responseMediaTypes&quot;:[],&quot;compatibleMediaTypes&quot;:{}}</serviceBinding>
+    <status>Complete</status>
+    <systemVersion>6</systemVersion>
+</ExternalServiceRegistration>
