@@ -1,0 +1,55 @@
+<!--
+  @description       : 
+  @author            : Arquimidez Mora
+  @group             : 
+  @last modified on  : 04-30-2025
+  @last modified by  : Arquimidez Mora
+  Modifications Log
+  Ver   Date         Author            Modification
+  1.0   04-30-2025   Arquimidez Mora   Initial Version
+-->
+<template>
+    <template lwc:if={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner> 
+    </template>
+    <template lwc:else>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+            </div>
+            <div class="slds-col">
+                <lightning-card  title="Retrieve Latest Rates">
+                    <h3 slot="title">
+                        <lightning-icon icon-name="standard:partner_marketing_budget" size="large"></lightning-icon>
+                        Retrieve Latest
+                    </h3>
+                    <div class="slds-grid slds-container_center">
+                        <div class="slds-col">
+                            <lightning-select
+                                name="base"
+                                label="Base Currency"
+                                value={strBaseCurrency}
+                                options={options}
+                                onchange={handleChange}
+                                required >
+                            </lightning-select>
+                            <lightning-select
+                                name="Currencies"
+                                label="Select Currencies"
+                                value={selectedCurrencies}
+                                options={options}
+                                onchange={handleChangeMultiple}
+                                multiple
+                                size="3">
+                            </lightning-select>
+                        </div>
+                    </div>
+                    <p slot="footer">
+                        <lightning-button label="Get Records" variant="brand" onclick={handleStoreSelected}></lightning-button>
+                    </p>
+                </lightning-card>
+            </div>
+            <div class="slds-col">
+            </div>
+        </div>
+    </template>
+</template>
